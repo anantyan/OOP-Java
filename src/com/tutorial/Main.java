@@ -3,18 +3,9 @@ package com.tutorial;
 public class Main {
 
   public static void main(String[] args) throws Exception {
-    //tutorial langsung ke #3 karena #2 instalasi konfigurasi project visual studio code
     //object
-    Mahasiswa mhs = new Mahasiswa();
-    mhs.namaLengkap = "Arya Rezza Anantya";
-    mhs.nim = "19SA1011";
-    mhs.kelas = "TI19A";
-    mhs.email = "anantya4995@gmail.com";
-
-    System.out.println(mhs.namaLengkap);
-    System.out.println(mhs.nim);
-    System.out.println(mhs.kelas);
-    System.out.println(mhs.email);
+    /* new Mahasiswa(); */
+    new Mahasiswa("Arya Rezza Anantya", "19SA1011", "TI19A", "anantya4995@gmail.com");
   }
 }
 
@@ -24,4 +15,20 @@ class Mahasiswa {
   String nim;
   String kelas;
   String email;
+
+  /* Mahasiswa(){
+    System.out.println("Ini adalah constructor");
+  } */
+  
+  Mahasiswa(String inputNamaLengkap, String inputNim, String inputKelas, String inputEmail){
+    namaLengkap = inputNamaLengkap;
+    nim = inputNim;
+    kelas = inputKelas;
+    email = inputEmail;
+
+    System.out.println(namaLengkap+"\n"
+      +nim+"\n"
+      +kelas+"\n"
+      +email);
+  }
 }
