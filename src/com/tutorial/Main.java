@@ -4,31 +4,40 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     //object
-    /* new Mahasiswa(); */
-    new Mahasiswa("Arya Rezza Anantya", "19SA1011", "TI19A", "anantya4995@gmail.com");
+    Mahasiswa mhs0 = new Mahasiswa("Yayan", "19SA9999", "TI19A");
+    
+    System.out.println(mhs0.nama);
+    System.out.println(mhs0.nim);
+    System.out.println(mhs0.kelas);
+
+    mhs0.setNama("Terserah");
+    System.out.println(mhs0.getNama());
+    //end object
   }
 }
 
 //class
 class Mahasiswa {
-  String namaLengkap;
+  String nama;
   String nim;
   String kelas;
-  String email;
 
-  /* Mahasiswa(){
-    System.out.println("Ini adalah constructor");
-  } */
-  
-  Mahasiswa(String inputNamaLengkap, String inputNim, String inputKelas, String inputEmail){
-    namaLengkap = inputNamaLengkap;
-    nim = inputNim;
-    kelas = inputKelas;
-    email = inputEmail;
-
-    System.out.println(namaLengkap+"\n"
-      +nim+"\n"
-      +kelas+"\n"
-      +email);
+  //constructor
+  Mahasiswa(String inputNama, String inputNim, String inputKelas) {
+    this.nama = inputNama;
+    this.nim = inputNim;
+    this.kelas = inputKelas;
   }
+  //end constructor
+
+  //methods
+  public void setNama(String inputNama) {
+    this.nama = inputNama;
+  }
+
+  String getNama() {
+    return this.nama;
+  }
+  //end methods
 }
+//end class
