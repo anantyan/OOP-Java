@@ -1,43 +1,82 @@
 package com.tutorial;
 
+// Latihan project
 public class Main {
 
-  public static void main(String[] args) throws Exception {
-    //object
-    Mahasiswa mhs0 = new Mahasiswa("Yayan", "19SA9999", "TI19A");
+  public static void main(String[] args) {
+    Player player1 = new Player("Parjo", 100);
+    Player player2 = new Player("Tukijo", 100);
     
-    System.out.println(mhs0.nama);
-    System.out.println(mhs0.nim);
-    System.out.println(mhs0.kelas);
+    Weapon senjata = new Weapon("Katana", 500);
+    Armor pelindung = new Armor("Baja Ringan", 200);
+    player1.equipWeapon(senjata);
+    player1.equipArmor(pelindung);
+    player1.display();
 
-    mhs0.setNama("Terserah");
-    System.out.println(mhs0.getNama());
-    //end object
+    System.out.println();
+
+    senjata = new Weapon("Ketapel", 350);
+    pelindung = new Armor("Alumunium", 50);    
+    player2.equipWeapon(senjata);
+    player2.equipArmor(pelindung);
+    player2.display();
   }
 }
 
-//class
-class Mahasiswa {
-  String nama;
-  String nim;
-  String kelas;
+class Player {
+  String name;
+  double health;
+  int level;
 
-  //constructor
-  Mahasiswa(String inputNama, String inputNim, String inputKelas) {
-    this.nama = inputNama;
-    this.nim = inputNim;
-    this.kelas = inputKelas;
-  }
-  //end constructor
+  // deklar weapon & armor
+  Weapon weapon;
+  Armor armor;
 
-  //methods
-  public void setNama(String inputNama) {
-    this.nama = inputNama;
+  Player(String name, double health) {
+    this.name = name;
+    this.health = health;
   }
 
-  String getNama() {
-    return this.nama;
+  void equipWeapon(Weapon weapon) {
+    this.weapon = weapon;
   }
-  //end methods
+
+  void equipArmor(Armor armor) {
+    this.armor = armor;
+  }
+
+  void display() {
+    System.out.println("Name: "+this.name+", Health: "+this.health+" hp");
+    this.weapon.display();
+    this.armor.display();
+  }
 }
-//end class
+
+class Weapon {
+  double attackPower;
+  String name;
+
+  Weapon(String name, double attackPower){
+    this.name = name;
+    this.attackPower = attackPower;
+  }
+
+  void display() {
+    System.out.println("Weapon: "+this.name+", Attack: "+this.attackPower);
+  }
+}
+
+class Armor {
+  double defencePower;
+  String name;
+
+  Armor(String name, double defencePower){
+    this.name = name;
+    this.defencePower = defencePower;
+  }
+
+  void display() {
+    System.out.println("Armor: "+this.name+", Defence: "+this.defencePower);
+  }
+}
+
