@@ -4,21 +4,30 @@ package com.tutorial;
 public class Main {
 
   public static void main(String[] args) {
-    Player player1 = new Player("Parjo", 100);
-    Player player2 = new Player("Tukijo", 100);
-    
-    Weapon senjata = new Weapon("Katana", 500);
-    Armor pelindung = new Armor("Baja Ringan", 200);
+    Player player1 = new Player("Parjo", 100);    
+    Weapon senjata = new Weapon("Katana", 10);
+    Armor pelindung = new Armor("Baja Ringan", 5);
     player1.equipWeapon(senjata);
     player1.equipArmor(pelindung);
-    player1.display();
 
     System.out.println();
 
-    senjata = new Weapon("Ketapel", 350);
-    pelindung = new Armor("Alumunium", 50);    
+    Player player2 = new Player("Tukijo", 100);
+    senjata = new Weapon("Ketapel", 5);
+    pelindung = new Armor("Alumunium", 1);    
     player2.equipWeapon(senjata);
     player2.equipArmor(pelindung);
+
+    System.out.println();
+    System.out.println("Pertaungan player 1 vs player 2");
+    System.out.println();
+
+    player1.attack(player2);
+
+    System.out.println();
+    player1.display();
+
+    System.out.println();
     player2.display();
   }
 }
@@ -35,6 +44,23 @@ class Player {
   Player(String name, double health) {
     this.name = name;
     this.health = health;
+  }
+
+  void attack(Player playerLain) {
+    double attackPower = this.weapon.attackPower;
+    System.out.println(this.name+" attacking "+playerLain.name+" with power "+attackPower);
+    playerLain.defence(attackPower);
+  }
+
+  void defence(double attacker) {
+    double damage;
+    if(this.armor.defencePower < attacker) {
+      damage = attacker - this.armor.defencePower;
+    }else{
+      damage = 0; 
+    }
+    this.health = this.health - damage;
+    System.out.println(this.name+" gots damage "+attacker);
   }
 
   void equipWeapon(Weapon weapon) {
